@@ -19,3 +19,11 @@ Docker permite empaquetar, distribuir y ejecutar aplicaciones en contenedores. U
 - Separar datos en volúmenes, no en la imagen.
 - Exponer solo los puertos necesarios.
 - Firmar y escanear imágenes por seguridad.
+
+## Beneficios
+
+- cada contenedor esta aislado de los demas.
+- Es posible ejecutar varias instancias de la misma version o diferentes versiones sin configuraciones adicionales.
+- con un comando ,puedes descargar,levantar y correr todo lo que necesitas
+- cada contenedor contiene todo lo que necesesita para ejecutarse.
+- Indifernete al sistema operativo HOST.
