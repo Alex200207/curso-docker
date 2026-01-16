@@ -26,4 +26,18 @@ Docker permite empaquetar, distribuir y ejecutar aplicaciones en contenedores. U
 - Es posible ejecutar varias instancias de la misma version o diferentes versiones sin configuraciones adicionales.
 - con un comando ,puedes descargar,levantar y correr todo lo que necesitas
 - cada contenedor contiene todo lo que necesesita para ejecutarse.
-- Indifernete al sistema operativo HOST.
+- Indiferente al sistema operativo HOST.
+
+comandos
+docker pull hola-mundo descragar una imagen
+docker container ls ver contenedores (forma nueva)
+docker ps forma antigua
+docker container ls -a ver todos los contendores
+
+docker container rm (elimina uno o varios contenedores)
+
+docker image ls (muestra imagenes)
+
+docker image ls -a (mostrar todas)
+
+docker image rm (elimina una o varias imagenes)
