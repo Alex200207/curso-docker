@@ -41,3 +41,15 @@ docker image ls (muestra imagenes)
 docker image ls -a (mostrar todas)
 
 docker image rm (elimina una o varias imagenes)
+
+docker container stop identificador aqui
+
+docker container start indentificador aqui
+
+docker container run -d : correro proyecto desenlazado de la consola
+docker container run -d -p 80:80 publicar para que se comunique en el puerto 80
+mapea el puerto 80 de mi equipo con el puerto que expone el contenedor
+
+docker container run -dp 80:80 forma corta
+
+docker container run --name some-postgres -dp 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword  postgres : creacion de contendor de postgres
