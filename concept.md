@@ -53,3 +53,9 @@ mapea el puerto 80 de mi equipo con el puerto que expone el contenedor
 docker container run -dp 80:80 forma corta
 
 docker container run --name some-postgres -dp 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword  postgres : creacion de contendor de postgres
+
+docker container run `
+> --name postgres-alpha `
+> -e POSTGRES_PASSWORD=mypass1 `
+> -dp 5432:5432 ` compuador:contenedor
+> postgres  crear comando en varias lineas basta con agrgar en powershell un espacio y (`)
