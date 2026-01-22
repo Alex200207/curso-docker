@@ -50,3 +50,19 @@ docker container run `
 mariadb:jammy
 
 -volume nuestro host: contenedor
+
+## ver puerto ocupado
+netstat -ano | findstr :8080
+## obtener nombre del proceso
+Get-Process -Id 6072
+
+
+### correr php my admin forma visual de correr la base de datos
+`phpmyadmin:5.2.0-apache` version
+
+docker container run `
+--name phpmyadmin `
+-d `
+-e PMA_ARBITRARY=1 `
+-p 8080:80 `
+phpmyadmin:5.2.0-apache
