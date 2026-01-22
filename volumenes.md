@@ -4,11 +4,12 @@ Un volumen en Docker es un mecanismo utilizado para almacenar datos de manera pe
 
 ## 3 tipos de volumenes.
 ### Named Volumenes: el mas usado, se le asigna un nombre al volumen
-- Crear volumen nuevo
+
+- Crear volumen nuevo o espacio en la computadora
 `docker volume create todo-bd`
 - Lista volumenes creados
 `docker volume ls`
-- Insperccionar el volumen especifico
+- Inspeccionar el volumen especifico
 `docker volume inspect todo-bd`
 - remueve todos los volumenes no usados
 `docker volume prune`
