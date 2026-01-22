@@ -47,6 +47,7 @@ docker container run `
 -e MARIADB_DATABASE=world-db `
 -dp 3308:3306 `
 --volume world-db:/var/lib/mysql `
+--network world-app `
 mariadb:jammy
 
 -volume nuestro host: contenedor
@@ -56,8 +57,8 @@ netstat -ano | findstr :8080
 ## obtener nombre del proceso
 Get-Process -Id 6072
 
-
 ### correr php my admin forma visual de correr la base de datos
+
 `phpmyadmin:5.2.0-apache` version
 
 docker container run `
@@ -65,4 +66,5 @@ docker container run `
 -d `
 -e PMA_ARBITRARY=1 `
 -p 8080:80 `
+--network world-app `
 phpmyadmin:5.2.0-apache
