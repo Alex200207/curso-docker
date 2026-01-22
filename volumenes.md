@@ -36,3 +36,17 @@ win
 ### anonymus volume
 
 es un volumen de Docker sin nombre, que Docker crea automáticamente cuando un contenedor lo necesita y tú no le das un nombre.
+
+### crear contendor con volumen 
+
+docker container run `
+--name world-db `
+-e MARIADB_USER=example-user `
+-e MARIADB_PASSWORD=user-password `
+-e MARIADB_ROOT_PASSWORD=root-secret-password `
+-e MARIADB_DATABASE=world-db `
+-dp 3308:3306 `
+--volume world-db:/var/lib/mysql `
+mariadb:jammy
+
+-volume nuestro host: contenedor
