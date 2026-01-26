@@ -17,3 +17,5 @@ vi hello-world.resolver.ts
 
 precionas (i) para editar y luego para salir Esc luego (:wq!) y enter para salir
 ![ejemplo](image-2.png)
+
+exit para salir de termal interactiva
