@@ -7,7 +7,7 @@ export class HelloWorldResolver {
     name: 'hello',
   })
   helloWorld(): string {
-    return 'Hola Mundo - desde mi equipo';
+    return 'Hola Mundo - desde mi contenedor';
   }
 
   @Query(() => Float, { name: 'randomNumber' })
