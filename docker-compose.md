@@ -39,3 +39,6 @@ services:
 volumes:
   db_data:
 ```
+
+# ejecutar
+docker compose -up : ejecuta el archivo yml

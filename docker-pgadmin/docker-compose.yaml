@@ -1,0 +1,39 @@
+# siempre se inicia con la version del docker-compose
+version: '3'
+
+#definimos los servicios que vamos a utilizar
+# cuidado con la indentacion
+services:
+  # nombre del servicio
+  db:
+    # nombre del contenedor
+    container_name: postgres_database
+    # definir la imagen
+    image: postgres:15.1
+    # definir volumenes
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    # definir variables de entorno
+    environment:
+      - POSTGRES_PASSWORD=123456
+  # segundo servicio
+  pgAdmin:
+    # hacer que dependa del servicio db pxq tiene que estar arriba
+    depends_on:
+      - db
+      
+    # imagen a usar
+    image: dpage/pgadmin4:6.17
+    # puerto
+    ports:
+    # conecta puerto local con el del contenedor
+      - "8081:80"
+    # variables de entorno
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=123456
+      - PGADMIN_DEFAULT_EMAIL=superman@google.com
+    # fin
+# definir volumenes
+volumes:
+  postgres-db:
+  
