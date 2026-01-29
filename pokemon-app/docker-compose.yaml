@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    container_name: pokemon-db
+    image: mongo:6.0
+    volumes:
+      - poke-vol:/data/db
+    ports:
+      - 27017:27017
+      # util con aplicaciones de multiples contenedores
+      # Reinicia el contenedor si se apaga inesperadamente
+    restart: always
+volumes:
+  poke-vol:
+    external: false
