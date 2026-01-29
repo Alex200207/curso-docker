@@ -44,3 +44,5 @@ volumes:
 
 docker compose -up : ejecuta el archivo yml
 docker compose down : remueve el contenedor el de la bd y la red
+docker compose logs -f : ver los logs 
+
