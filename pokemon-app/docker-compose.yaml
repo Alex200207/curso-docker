@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   db:
@@ -11,6 +11,11 @@ services:
       # util con aplicaciones de multiples contenedores
       # Reinicia el contenedor si se apaga inesperadamente
     restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: mongoadmin
+      # cuando se monta la imagen ejecuta este comando
+    command: ["--auth"]
 volumes:
   poke-vol:
     external: false
