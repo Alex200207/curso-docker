@@ -15,6 +15,7 @@ services:
       # - postgres-db:/var/lib/postgresql/data # ejemplo
       # enlazar volumen local con el del contenedor
       # bind volume
+      # siempre poner el punto para que tome la ruta relativa
       - ./postgres:/var/lib/postgresql/data 
     # definir variables de entorno
     environment:
@@ -31,6 +32,12 @@ services:
     ports:
     # conecta puerto local con el del contenedor
       - "8081:80"
+    # volumen para pgadmin
+    volumes:
+    # bind volume
+    # siempre poner el punto para que tome la ruta relativa
+    # el primer parametro es la ruta local y el segundo la del contenedor
+      - ./pgadmin:/var/lib/pgadmin
     # variables de entorno
     environment:
       - PGADMIN_DEFAULT_PASSWORD=123456
