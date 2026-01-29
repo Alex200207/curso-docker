@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db:
-    container_name: pokemon-db
+    container_name: ${MONGO_DB_NAME}
     image: mongo:6.0
     volumes:
       - poke-vol:/data/db
@@ -12,8 +12,8 @@ services:
       # Reinicia el contenedor si se apaga inesperadamente
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongoadmin
-      MONGO_INITDB_ROOT_PASSWORD: mongoadmin
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
       # cuando se monta la imagen ejecuta este comando
     command: ["--auth"]
 volumes:
