@@ -36,4 +36,5 @@ services:
 # definir volumenes
 volumes:
   postgres-db:
-  
+  # usar un volumen externo
+    external: true

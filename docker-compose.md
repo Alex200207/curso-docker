@@ -40,5 +40,7 @@ volumes:
   db_data:
 ```
 
-# ejecutar
+### ejecutar
+
 docker compose -up : ejecuta el archivo yml
+docker compose down : remueve el contenedor el de la bd y la red
