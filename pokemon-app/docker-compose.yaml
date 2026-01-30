@@ -33,6 +33,19 @@ services:
       - "8081:8081"
     # util con aplicaciones de multiples contenedores
     restart: always
+  # nuevo servicio
+  poke-app:
+  # depende de db y mongo-express
+    depends_on:
+      - db
+      - mongo-express
+    image: klerith/pokemon-nest-app:1.0.0
+    ports: 
+      - "3000:3000"
+    environment:
+    # variables de entorno para conectarse a mongo
+      MONGODB: mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_DB_NAME}:27017
+      DB_NAME: ${MONGO_DB_NAME}
 volumes:
   poke-vol:
     external: false
