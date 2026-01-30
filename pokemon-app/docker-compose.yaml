@@ -1,13 +1,13 @@
 version: "3"
 
 services:
-  db:
+  db: # nombre del servicio
     container_name: ${MONGO_DB_NAME}
     image: mongo:6.0
     volumes:
       - poke-vol:/data/db
-    ports:
-      - 27017:27017
+    # ports:
+    #   - 27017:27017
       # util con aplicaciones de multiples contenedores
       # Reinicia el contenedor si se apaga inesperadamente
     restart: always
@@ -15,7 +15,24 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
       # cuando se monta la imagen ejecuta este comando
+      # y este comando activa la autenticacion
     command: ["--auth"]
+  mongo-express: # nombre del servicio
+    depends_on:
+      - db
+    # imagen ligera para administrar mongo via web
+    image: mongo-express:1.0.0-alpha.4
+    # son las variables de entorno que necesita mongo-express para conectarse a mongo
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
+      # nombre de contenedor o servicio de mongo
+      ME_CONFIG_MONGODB_SERVER: ${MONGO_DB_NAME}
+    # exponemos nuestro puerto 8081 al puerto 8081 del contenedor
+    ports:
+      - "8081:8081"
+    # util con aplicaciones de multiples contenedores
+    restart: always
 volumes:
   poke-vol:
     external: false
