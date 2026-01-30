@@ -39,6 +39,7 @@ services:
     depends_on:
       - db
       - mongo-express
+      # API restful de pokemon
     image: klerith/pokemon-nest-app:1.0.0
     ports: 
       - "3000:3000"
