@@ -1,16 +1,21 @@
 # aqui agregares instrucciones para crear la imagen
 # imagen base : es un pequeño linux con node instalado configurado para correr aplicaciones nodejs
-FROM node:19.2-alpine3.16 
-# eligir directorio de trabajo
+FROM node:20-alpine3.16 
+# eligir directorio de trabajo es como hacer el cd a la carpeta app
 WORKDIR /app
 # copy es para copiar archivos desde tu pc a la imagen
 # destino ultimo luagar donde se copian los archivos en la imagen
 # pp.js package.json son los archivos que se copian
 # el ./ significa el directorio actual de trabajo en la imagen
-COPY app.js package.json ./
-
+COPY package.json ./
 # ejecutra procedimientos para instalar dependencias
 RUN npm install
+# un solo paso copia todo
+COPY . . 
+
+
+# realizar testing si falla la imagen no se crea
+RUN npm run test
 
 # ejecutar la aplicacion
 CMD [ "node", "app.js" ]
