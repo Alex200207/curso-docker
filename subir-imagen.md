@@ -3,6 +3,6 @@ ir a docker repositorios y agregar un repositorio , agregar un nombre y esta la 
 
 renombramos primero nuestra imagen con el nombre del repositorio
 nombre de imagen / nombre de repositorio
-docker image tag cron-ticker alex146/cron-ticker
+docker image tag cron-ticker:latest alex146/cron-ticker:castor
 
 docker push alex200207/cron-ticker con esto subimos la imagen 
