@@ -5,7 +5,7 @@ FROM node:20-alpine3.16
 WORKDIR /app
 # copy es para copiar archivos desde tu pc a la imagen
 # destino ultimo luagar donde se copian los archivos en la imagen
-# pp.js package.json son los archivos que se copian
+# app.js package.json son los archivos que se copian
 # el ./ significa el directorio actual de trabajo en la imagen
 COPY package.json ./
 # ejecutra procedimientos para instalar dependencias

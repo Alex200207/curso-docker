@@ -1,0 +1,1 @@
+Similar al .gitignore el .dockerignore especifica todo lo que hay que ignorar en un proceso de construccion (build)

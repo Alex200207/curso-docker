@@ -1,0 +1,5 @@
+node_modules
+#instrucciones para crear la imagen no necesitamos que se parte cuando ya fue creada
+Dockerfile
+.dockerignore
+.gitignore
