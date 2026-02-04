@@ -2,7 +2,9 @@
 # imagen base : es un pequeño linux con node instalado configurado para correr aplicaciones nodejs
 # con --platform se elige la arquitectura de la imagen
 # FROM --platform=linux/amd64 node:20-alpine3.16 
-FROM node:20-alpine3.16 
+# usa variable de entorno especial para elegir la plataforma de construccion
+ FROM --platform=$BUILDPLATFORM node:20-alpine3.16 
+# FROM node:20-alpine3.16 
 # eligir directorio de trabajo es como hacer el cd a la carpeta app
 WORKDIR /app
 # copy es para copiar archivos desde tu pc a la imagen
@@ -24,7 +26,7 @@ RUN npm run test
 # && para ejecutar varios comandos en una sola linea
 RUN rm -rf tests && rm -rf node_modules
 # instala unicamente las dependencias de produccion
-RUN npm install --prod
+RUN npm install --production
 
 # ejecutar la aplicacion
 CMD [ "node", "app.js" ]

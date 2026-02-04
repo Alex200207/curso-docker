@@ -28,3 +28,8 @@ docker buildx create \
 
 Arranca contenedor buildkit 
 docker buildx inspect --bootstrap
+
+
+inspeccionar las arquitecturas que l builder va trabar
+docker buildx inspect
+
