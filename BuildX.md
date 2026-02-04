@@ -16,4 +16,4 @@ docker buildx ls : listar builds
 
 crear un nuevo buildx 
 
-docker buildx create --name mybuilder --driver docker container --bootstrap mybuilder
+docker buildx create --name mybuilder --driver docker-container --bootstrap mybuilder
