@@ -17,5 +17,12 @@ COPY . .
 # realizar testing si falla la imagen no se crea
 RUN npm run test
 
+# si todo pasa eliminar dependencias de desarrollo
+# rf borrar todos los derictorios forzadamente
+# && para ejecutar varios comandos en una sola linea
+RUN rm -rf tests && rm -rf node_modules
+# instala unicamente las dependencias de produccion
+RUN npm install --prod
+
 # ejecutar la aplicacion
 CMD [ "node", "app.js" ]
