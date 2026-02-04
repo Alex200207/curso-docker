@@ -16,4 +16,15 @@ docker buildx ls : listar builds
 
 crear un nuevo buildx 
 
-docker buildx create --name mybuilder --driver docker-container --bootstrap mybuilder
+docker buildx create --name mybuilder --driver docker-container --use
+docker buildx inspect --bootstrap
+
+
+docker buildx create \
+  --name mybuilder \          # Nombre lógico del builder (solo una etiqueta)
+  --driver docker-container \ # Indica que BuildKit correrá dentro de un contenedor Docker
+  --use                       # Hace que este builder sea el activo por defecto
+
+
+Arranca contenedor buildkit 
+docker buildx inspect --bootstrap
