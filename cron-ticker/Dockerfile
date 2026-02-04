@@ -1,6 +1,7 @@
 # aqui agregares instrucciones para crear la imagen
 # imagen base : es un pequeño linux con node instalado configurado para correr aplicaciones nodejs
-FROM node:20-alpine3.16 
+# con --platform se elige la arquitectura de la imagen
+FROM --platform=linux/amd64 node:20-alpine3.16 
 # eligir directorio de trabajo es como hacer el cd a la carpeta app
 WORKDIR /app
 # copy es para copiar archivos desde tu pc a la imagen
