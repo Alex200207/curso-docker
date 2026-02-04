@@ -33,3 +33,13 @@ docker buildx inspect --bootstrap
 inspeccionar las arquitecturas que l builder va trabar
 docker buildx inspect
 
+Genera una nueva imagen multi-arquitectura (amd64 y arm64) usando buildx
+y la publica en el registry. El punto final (.) indica el contexto del build,
+es decir, el directorio donde se encuentra el Dockerfile desde donde se
+ejecuta el comando.
+
+
+docker buildx build --platform linux/amd64,linux/arm64 `
+-t alex146/cron-ticker:latest --push .
+
+(recordar que ese punto al final va ejectar el docker file donde ejecuto el comando)
