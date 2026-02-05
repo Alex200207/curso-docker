@@ -1,4 +1,4 @@
-# primer stage ----------------------------------------------------------
+# primer stage ---------------------------------------------------------- dependencias de desarrollo
 # con as le damos un nombre al stage para referenciarlo despues
 # este servidor con la distribucion alpine tendra esta primera etapa
 FROM node:20-alpine3.16 as deps
@@ -7,6 +7,7 @@ COPY package.json ./
 RUN npm install
 
 # segundo stage -----------------------------------------------------
+    # Build y testing
 FROM node:20-alpine3.16 as builder
 # elegir directorio de trabajo es como hacer el cd a la carpeta app
 WORKDIR /app
@@ -20,6 +21,7 @@ RUN npm run test
 # dependencias de produccion
 FROM node:20-alpine3.16 as prod-deps
 WORKDIR /app
+COPY package.json ./
 RUN npm install --production
 
 # etapa final ------------------------------------------------------
