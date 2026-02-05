@@ -43,3 +43,77 @@ docker buildx build --platform linux/amd64,linux/arm64 `
 -t alex146/cron-ticker:latest --push .
 
 (recordar que ese punto al final va ejectar el docker file donde ejecuto el comando)
+
+
+
+
+# 1️⃣ Cambiar al contexto Docker por defecto
+# (necesario si el builder activo depende de otro contexto)
+docker context use default
+
+# 2️⃣ Cambiar al builder "default"
+# (no se puede eliminar un builder que está en uso)
+docker buildx use default
+
+# 3️⃣ Verificar builders disponibles
+# El * debe estar en "default"
+docker buildx ls
+
+# 4️⃣ Eliminar el builder personalizado
+docker buildx rm mybuilder
+
+# 5️⃣ (Opcional) Volver al contexto de Docker Desktop
+docker context use desktop-linux
+
+# 6️⃣ (Opcional) Volver al builder de Docker Desktop
+docker buildx use desktop-linux
+
+
+
+# 🐳 Docker Context – Chuletario rápido
+
+## ¿Qué es un Docker Context?
+Un **Docker context** define **a qué Docker daemon te conectas**.
+En otras palabras:
+> “¿Dónde se ejecutan mis comandos `docker`?”
+
+Puede ser:
+- Docker local
+- Docker Desktop
+- Un servidor remoto
+- Un Docker vía SSH
+
+---
+
+## Listar contextos disponibles
+```bash
+docker context ls
+```
+
+El * indica el contexto activo
+
+Cambiar de contexto
+docker context use default
+
+docker context use desktop-linux
+
+Ver detalles de un contexto
+docker context inspect default
+
+Crear un contexto (ejemplo remoto)
+docker context create my-remote \
+--docker "host=ssh://user@server"
+
+Eliminar un contexto
+docker context rm my-remote
+
+Relación con buildx (idea clave)
+Docker Context → Docker daemon
+Docker Buildx  → Builder (BuildKit) dentro del contexto
+
+
+Siempre:
+
+Seleccionas contexto
+
+Luego seleccionas builder
