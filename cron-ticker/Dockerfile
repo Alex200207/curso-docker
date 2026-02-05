@@ -2,7 +2,7 @@
 # imagen base : es un pequeño linux con node instalado configurado para correr aplicaciones nodejs
 # con --platform se elige la arquitectura de la imagen
 # FROM --platform=linux/amd64 node:20-alpine3.16 
-# usa variable de entorno especial para elegir la plataforma de construccion
+# usa variable de entorno especial para elegir la arquitectura que pasemos como argunmento en el build
  FROM --platform=$BUILDPLATFORM node:20-alpine3.16 
 # FROM node:20-alpine3.16 
 # eligir directorio de trabajo es como hacer el cd a la carpeta app
