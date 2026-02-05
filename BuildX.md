@@ -27,11 +27,13 @@ docker buildx create \
 
 
 Arranca contenedor buildkit 
-docker buildx inspect --bootstrap
+docker buildx inspect mybuilder --bootstrap
 
 
 inspeccionar las arquitecturas que l builder va trabar
 docker buildx inspect
+
+docker buildx imagetools inspect imagen:tag
 
 Genera una nueva imagen multi-arquitectura (amd64 y arm64) usando buildx
 y la publica en el registry. El punto final (.) indica el contexto del build,
