@@ -1,0 +1,1 @@
+El multi-stage build tiene como finalidad que nosotros podamos ir creando etapas  para la construccion final de la imagen que nosotros queremos
