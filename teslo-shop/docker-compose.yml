@@ -8,6 +8,8 @@ services:
     build:
     # el context es la ruta donde se encuentra el Dockerfile, en este caso es la raiz del proyecto
       context: .
+      # el target es la etapa que queremos ejecutar, en este caso es la etapa dev, que es la primera etapa del Dockerfile
+      target: dev
       # nombre del Dockerfile, si no se especifica, por defecto se llama Dockerfile
       dockerfile: Dockerfile
       # podes ejecutar el comando aqui tambien
