@@ -3,7 +3,7 @@ FROM node:20-alpine AS dev
 WORKDIR /app
 COPY package.json package.json
 RUN yarn install
-# CMD [ "yarn","start:dev" ]
+CMD [ "yarn","start:dev" ]
 
 # dev-deps es el nombre de la etapa
 FROM node:20-alpine AS dev-deps 
