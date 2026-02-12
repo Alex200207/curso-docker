@@ -14,7 +14,8 @@ services:
       dockerfile: Dockerfile
       # podes ejecutar el comando aqui tambien
     # command: yarn start:dev
-
+    # definir nombre de imagen y su tag
+    image: alex146/teslo-shop-backend:2.0
     container_name: nest-app
     ports:
     # puerto de mi maquina separado : puerto del contenedor
