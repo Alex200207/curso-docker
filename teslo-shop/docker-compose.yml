@@ -2,6 +2,37 @@ version: '3'
 
 
 services:
+  app:
+
+# nos sirve para construir la imagen a partir del Dockerfile, en lugar de usar una imagen preconstruida
+    build:
+    # el context es la ruta donde se encuentra el Dockerfile, en este caso es la raiz del proyecto
+      context: .
+      # nombre del Dockerfile, si no se especifica, por defecto se llama Dockerfile
+      dockerfile: Dockerfile
+
+    volumes:
+    # proposito cada modificacion que haga en mi maquina se vea reflejada en el contenedor
+    # creamos bind volume
+    # el primer . es ruta de mi maquina separado : el segundo es la ruta del contenedor
+      - .:/app/
+      - /app/node_modules
+      
+    container_name: nest-app
+    ports:
+    # puerto de mi maquina separado : puerto del contenedor
+      - ${PORT}:${PORT}
+    environment:
+      APP_VERSION: ${APP_VERSION}
+      STAGE: ${STAGE}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      PORT: ${PORT}
+      HOST_API: ${HOST_API}
+      JWT_SECRET: ${JWT_SECRET}
   
   db:
     image: postgres:14.3
