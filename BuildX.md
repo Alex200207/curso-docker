@@ -44,6 +44,11 @@ ejecuta el comando.
 docker buildx build --platform linux/amd64,linux/arm64 `
 -t alex146/cron-ticker:latest --push .
 
+docker buildx build --platform linux/amd64 `
+-t alex146/teslo-shop:1.0.0 `
+--push .
+
+
 (recordar que ese punto al final va ejectar el docker file donde ejecuto el comando)
 
 
