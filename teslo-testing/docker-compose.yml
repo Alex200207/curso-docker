@@ -5,7 +5,7 @@ services:
   
   app:
 
-    image: alex146/teslo-shop:1.0.0
+    image: alex146/teslo-shop:1.0.1
     # depends_on:
     #   - db
     restart: always
