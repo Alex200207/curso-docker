@@ -19,9 +19,8 @@ services:
     # proposito cada modificacion que haga en mi maquina se vea reflejada en el contenedor
     # creamos bind volume
     # el primer . es ruta de mi maquina separado : el segundo es la ruta del contenedor
-      - ./teslo-shop:/app/
-      # creamos volumen anonimo mapea el contenido del host que no es nada
-      - /app/node_modules
+      - .:/app
+      # Elimina el volumen anónimo de node_modules para evitar conflictos
 
     container_name: nest-app
     ports:
