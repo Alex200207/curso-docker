@@ -33,3 +33,19 @@ spec:
 
 Este ejemplo crea un pod con un contenedor que ejecuta Nginx.
 
+# Presentacion
+
+ Kubernetes es una plataforma para aotomatizar el despliegue escala y manejo de contenedores. originalmente creado por google.
+
+Que problemas resuelve??
+
+Usuarios esperan un servicio 24/7.
+
+los de it esperan hacer muchos despliegues en un dia sin detener el servicio que esta corriendo: permitiria tener cambios en caliente sin detener el servicio.
+
+las companias esperan mayor eficiciencia de los recursos de la nube: todo el tiempo que este un servicio en la nube se esta facturando
+
+un sistema tolerante a fallas en el mommento que algo salga mal: si la app crashe no se detenga.
+
+Escala hacia arriba y hacia abajo segun demanda.
+
