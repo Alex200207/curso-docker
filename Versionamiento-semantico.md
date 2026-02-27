@@ -12,3 +12,6 @@
  *
  * Este sistema permite identificar fácilmente el tipo de cambio realizado en el software.
  */
+
+revisar aqui para entender mejor los conceptos y uso de una herramienta que gestiona eso por nosotros
+ https://github.com/marketplace/actions/git-semantic-version?version=v4.0.3
