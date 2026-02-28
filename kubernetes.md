@@ -49,3 +49,56 @@ un sistema tolerante a fallas en el mommento que algo salga mal: si la app crash
 
 Escala hacia arriba y hacia abajo segun demanda.
 
+
+Orquestacion es basicamente lo que hace kubernetes
+
+- manejo automatico de aplicaciones en contenedores
+- alta disponibilidad
+- practicamnete no hay "downtimes (poder cambiar algo en la aplicacion sin tener que detener todos los procesos y tambien mas facil remplazar por otras versiones)" en reemplazos de versiones.
+
+- facil manejo de replicas: puede ser que tengamos nuestra app que pueda tener varias copias , si la replica 1 se cae tenemos la dos o la tres lo cual es muy util.
+
+Componentes principales.
+
+pod: son los objetos implementables mas pequenos y basicos en k8s
+
+- Es una capa abstracta sobre uno o mas contenedores
+- Esto permite remplezarlos facilmente
+- tienen ip unica asignada , que al reconstruirse cambia
+----------------------------------------------------------------------
+
+Services: tienen una ip unica asignada y el servicio sabe que contenedor o cual es la direccion de esos contenedores y asi permite una comunicacion facilmente entre ellos , sin importar que la direccion ip del contenedor cambie.
+
+Dos tipos de servicios internos y externos
+
+- ip permanente
+- ciclo de vida del POD y servicios son independientes.
+
+-----------------------------------------------------------------------
+
+Ingress: una nueva solicitud a nuestro sitio web (por ejemplo) entra primero por ingress y este a los respectivos servicios.
+
+-------------------------------------------------------------------------
+ConfigMap : podemos verlo como las variables de entornos , cual es la url de base de datos , donde esta la informacion y son esas variables de entornos que no son privadas no importan si las gente las ve pxq es un objeto plano.
+
+-------------------------------------------------------------------------
+secrets: son como configmap pero relativamente seguros , esta incriptada por defecto en string base64, pero los secrets surven para mantener ciertas variables tambien de entorno que necesitan ser ocultadas ejemplo el jwt , la firma, alguna llave del backend o  bueno un valor que no necesitas que la gente conozca su valor.
+
+-------------------------------------------------------------------------
+volume: discos duros externos que se van acoplando a nuestro cluster, kubernetes no maneja la persistencia de nuestra data es algo que debemos manejar por nuetro lado .
+
+-------------------------------------------------------------------------
+deployment: es un plano o blueprint para crear POD y la cantidad de replicas. aqui es donde escalar arriba o abajo las replicas.
+
+------------------------------------------------------------------------
+statefulset: muy parecido al deployment pero especializado en base de datos , es el plano similar a los deployment , pero para bases de datos principalmnete.
+
+------------------------------------------------------------------------
+
+cluster : un grupo de nodos que corren aplicaciones en contenedores de una forma eficiente , automatizada , distribuida y escalable
+
+![alt text](image-3.png)
+
+-----------------------------------------------------------------------
+
+![alt text](image-4.png)
