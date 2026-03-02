@@ -27,3 +27,7 @@ kubectl get all
 ![alt text](image.png)
 
 es posible que la primera ves no este listo pues puede que este descargando imagen y configurando contenedor.
+
+# ver informacion sobre el pod
+
+kubectl describe deployment.apps/postgres-deployment
