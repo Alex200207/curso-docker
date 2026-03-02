@@ -80,8 +80,8 @@ spec:
   ports:
   # tcp es el protocolo que se va a usar para la comunicacion entre el servicio y el deployment
     - protocol: TCP
-      port: 80 # cualquier puerto, es el puerto que todo aquel afuera tendra que utilizar
+      port: 3000 # cualquier puerto, es el puerto que todo aquel afuera tendra que utilizar
       # para conectarse al puerto 5432 que tengo enlzado con el contenedor
-      targetPort: 80 # puerto que se conecta con el puerto del contenedor, es el puerto que el contenedor esta exponiendo
+      targetPort: 3000 # puerto que se conecta con el puerto del contenedor, es el puerto que el contenedor esta exponiendo
       nodePort: # puerto que se va a exponer en los nodos, es el puerto que se va a usar para acceder al servicio desde afuera del cluster
-        30200 # cualquier puerto entre 30000 y 32767, es el puerto que se va a usar para acceder al servicio desde afuera del cluster
+        30300 # cualquier puerto entre 30000 y 32767, es el puerto que se va a usar para acceder al servicio desde afuera del cluster
