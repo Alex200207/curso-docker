@@ -39,3 +39,7 @@ kubectl describe deployment.apps/postgres-deployment
  # exponer servicio 
 
   minikube service pg-admin-service
+
+# reiniciar todos los deployments
+
+kubectl rollout restart deployment
