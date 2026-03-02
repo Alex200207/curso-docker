@@ -31,3 +31,20 @@ spec: # definicion de nuestro pod
             secretKeyRef: # es un secretKeyRef porque es un secreto
               name: postgres-secrets # el nombre del secret que creamos
               key: DB_PASSWORD
+--- # nuevo archivo abajo
+
+# servicio lo dejamos por aca por que siempre va estar de la mano con deployments
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app: postgres
+  ports:
+  # tcp es el protocolo que se va a usar para la comunicacion entre el servicio y el deployment
+    - protocol: TCP
+      port: 5432 # cualquier puerto, es el puerto que todo aquel afuera tendra que utilizar
+      # para conectarse al puerto 5432 que tengo enlzado con el contenedor
+      targetPort: 5432 
