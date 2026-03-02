@@ -47,4 +47,4 @@ spec:
     - protocol: TCP
       port: 5432 # cualquier puerto, es el puerto que todo aquel afuera tendra que utilizar
       # para conectarse al puerto 5432 que tengo enlzado con el contenedor
-      targetPort: 5432 
+      targetPort: 5432 # puerto que se conecta con el puerto del contenedor, es el puerto que el contenedor esta exponiendo
