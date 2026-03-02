@@ -39,7 +39,7 @@ spec: # definicion de nuestro pod
               name: pg-admin-secrets # el nombre del secret que creamos
               key: PG_USER_EMAIL
         - name: PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION
-          value: "false" # valor de la variable de entorno, es una variable de entorno que se usa para desactivar la proteccion de cookies mejorada, es necesario para que pg-admin funcione correctamente en kubernetes
+          value: "False" # valor de la variable de entorno, es una variable de entorno que se usa para desactivar la proteccion de cookies mejorada, es necesario para que pg-admin funcione correctamente en kubernetes
 --- # nuevo archivo abajo
 
 # servicio lo dejamos por aca por que siempre va estar de la mano con deployments

@@ -35,3 +35,7 @@ kubectl describe deployment.apps/postgres-deployment
 # ver los logs
  
  kubectl logs pod/postgres-deployment-656cfb5fd4-8nd94
+
+ # exponer servicio 
+
+  minikube service pg-admin-service
