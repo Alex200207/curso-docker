@@ -102,3 +102,8 @@ cluster : un grupo de nodos que corren aplicaciones en contenedores de una forma
 -----------------------------------------------------------------------
 
 ![alt text](image-4.png)
+
+
+Documentacion
+
+https://kubernetes.io/es/docs/concepts/

@@ -1,0 +1,13 @@
+# nuestro configmap creara nuestras variables de entorno
+apiVersion: v1
+kind: ConfigMap # nombre de archivo
+metadata: # nombre del configmap
+  name: postgres-config
+data:
+  DB_NAME: postgres
+  # nuestro host sera nombre del servidor de la base de datos, en este caso el nombre del servicio
+  DB_HOST: postgres-service
+  DB_PORT: "5432" # el puerto debe ser string siempre
+
+
+  
