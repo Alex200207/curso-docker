@@ -1,0 +1,87 @@
+# configuracion de backend, el cliente web para administrar backend
+
+# nuestro deployment de backend
+# este es nuestro blueprint o plano
+# es nuestra plantilla para crear nuestros pods
+
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment # el nombre del deployment
+  labels:
+    app: backend
+spec: # definicion de nuestro pod
+  replicas: 2 # copias del pod
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: klerith/k8s-teslo-backend:1.1.0
+        ports:
+        - containerPort: 3000
+        env: # se manajea con key value pairs
+        - NAME: APP_VERSION
+          value: "1.1.0"
+        - NAME: PORT
+          value: "3000"
+        - NAME: STAGE
+          value: "prod"
+        - NAME: DB_NAME
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: postgres-config # el nombre del secret que creamos
+              key: DB_NAME
+        - name: DB_HOST
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: postgres-config # el nombre del secret que creamos
+              key: DB_HOST
+        - name: DB_PORT
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: postgres-config # el nombre del secret que creamos
+              key: DB_PORT
+        - name: DB_USERNAME
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: postgres-secrets # el nombre del secret que creamos
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: postgres-secrets # el nombre del secret que creamos
+              key: DB_PASSWORD
+        - name: JWT_SECRET
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: backend-secrets # el nombre del secret que creamos
+              key: JWT_SECRET
+
+--- # nuevo archivo abajo
+
+# servicio lo dejamos por aca por que siempre va estar de la mano con deployments
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  type: NodePort # permite agregar comunicacion externa
+  selector:
+    app: backend
+  ports:
+  # tcp es el protocolo que se va a usar para la comunicacion entre el servicio y el deployment
+    - protocol: TCP
+      port: 80 # cualquier puerto, es el puerto que todo aquel afuera tendra que utilizar
+      # para conectarse al puerto 5432 que tengo enlzado con el contenedor
+      targetPort: 80 # puerto que se conecta con el puerto del contenedor, es el puerto que el contenedor esta exponiendo
+      nodePort: # puerto que se va a exponer en los nodos, es el puerto que se va a usar para acceder al servicio desde afuera del cluster
+        30200 # cualquier puerto entre 30000 y 32767, es el puerto que se va a usar para acceder al servicio desde afuera del cluster
