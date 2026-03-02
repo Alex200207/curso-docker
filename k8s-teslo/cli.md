@@ -26,4 +26,4 @@ kubectl get all
 
 ![alt text](image.png)
 
-es posible que la primera ves no este listo 
+es posible que la primera ves no este listo pues puede que este descargando imagen y configurando contenedor.
