@@ -1,0 +1,62 @@
+# configuracion de pg-admin, el cliente web para administrar pg-admin
+
+# nuestro deployment de pg-admin
+# este es nuestro blueprint o plano
+# es nuestra plantilla para crear nuestros pods
+
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pg-admin-deployment # el nombre del deployment
+  labels:
+    app: pg-admin
+spec: # definicion de nuestro pod
+  replicas: 1 # copias del pod
+  selector:
+    matchLabels:
+      app: pg-admin
+  template:
+    metadata:
+      labels:
+        app: pg-admin
+    spec:
+      containers:
+      - name: pg-admin
+        image: dpage/pgadmin4:6.17
+        ports:
+        - containerPort: 5432
+        env: # se manajea con key value pairs
+        - name: PGADMIN_DEFAULT_PASSWORD
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: pg-admin-secrets # el nombre del secret que creamos
+              key: DB_PASSWORD
+        - name: PGADMIN_DEFAULT_EMAIL
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: pg-admin-secrets # el nombre del secret que creamos
+              key: PG_USER_EMAIL
+        - name: PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION
+          value: "false" # valor de la variable de entorno, es una variable de entorno que se usa para desactivar la proteccion de cookies mejorada, es necesario para que pg-admin funcione correctamente en kubernetes
+--- # nuevo archivo abajo
+
+# servicio lo dejamos por aca por que siempre va estar de la mano con deployments
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pg-admin-service
+spec:
+  type: NodePort # permite agregar comunicacion externa
+  selector:
+    app: pg-admin
+  ports:
+  # tcp es el protocolo que se va a usar para la comunicacion entre el servicio y el deployment
+    - protocol: TCP
+      port: 80 # cualquier puerto, es el puerto que todo aquel afuera tendra que utilizar
+      # para conectarse al puerto 5432 que tengo enlzado con el contenedor
+      targetPort: 80 # puerto que se conecta con el puerto del contenedor, es el puerto que el contenedor esta exponiendo
+      nodePort: # puerto que se va a exponer en los nodos, es el puerto que se va a usar para acceder al servicio desde afuera del cluster
+        30200 # cualquier puerto entre 30000 y 32767, es el puerto que se va a usar para acceder al servicio desde afuera del cluster
