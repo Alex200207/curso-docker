@@ -7,18 +7,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment # el nombre del deployment
+  name: postgres-deployment # el nombre del deployment
   labels:
-    app: nginx
+    app: postgres
 spec: # definicion de nuestro pod
-  replicas: 3 # copias del pod
+  replicas: 1 # copias del pod
   selector:
     matchLabels:
-      app: nginx
+      app: postgres
   template:
     metadata:
       labels:
-        app: nginx
+        app: postgres
     spec:
       containers:
       - name: postgres
