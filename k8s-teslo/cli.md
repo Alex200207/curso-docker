@@ -31,3 +31,7 @@ es posible que la primera ves no este listo pues puede que este descargando imag
 # ver informacion sobre el pod
 
 kubectl describe deployment.apps/postgres-deployment
+
+# ver los logs
+ 
+ kubectl logs pod/postgres-deployment-656cfb5fd4-8nd94
