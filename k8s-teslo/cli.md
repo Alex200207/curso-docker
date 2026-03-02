@@ -3,7 +3,7 @@ minikube start
 
 # ver ip de nuestro cluster
 
-kubectl get a;;
+kubectl get all
 
 # con este comando
 
@@ -19,3 +19,11 @@ kubectl apply -f .\postgres-secrets.yml
 # ahora con nuestro deployment 
 
 kubectl apply -f .\postgres.yml
+
+# revisar estado 
+
+kubectl get all
+
+![alt text](image.png)
+
+es posible que la primera ves no este listo 
