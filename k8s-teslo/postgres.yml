@@ -1,4 +1,6 @@
 # nuestro deployment de postgres
+# este es nuestro blueprint o plano
+# es nuestra plantilla para crear nuestros pods
 
 # https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
 
@@ -19,7 +21,13 @@ spec: # definicion de nuestro pod
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - name: postgres
+        image: postgres:15.1
         ports:
-        - containerPort: 80
+        - containerPort: 5432
+        env: # se manajea con key value pairs
+        - name: POSTGRES_PASSWORD
+          valueFrom: # busca el valor de la variable de entorno en un secret
+            secretKeyRef: # es un secretKeyRef porque es un secreto
+              name: postgres-secrets # el nombre del secret que creamos
+              key: DB_PASSWORD
