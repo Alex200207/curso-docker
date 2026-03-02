@@ -1,4 +1,7 @@
 # nuestro configmap creara nuestras variables de entorno
+
+# https://kubernetes.io/docs/concepts/configuration/configmap/
+
 apiVersion: v1
 kind: ConfigMap # nombre de archivo
 metadata: # nombre del configmap
@@ -10,4 +13,3 @@ data:
   DB_PORT: "5432" # el puerto debe ser string siempre
 
 
-  
