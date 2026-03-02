@@ -36,18 +36,18 @@ spec: # definicion de nuestro pod
               value: 'prod'
             - name: DB_NAME
               valueFrom: # busca el valor de la variable de entorno en un secret
-                secretKeyRef: # es un secretKeyRef porque es un secreto
-                  name: postgres-config # el nombre del secret que creamos
+                configMapKeyRef: # postgres-config es un ConfigMap
+                  name: postgres-config # el nombre del configmap que creamos
                   key: DB_NAME
             - name: DB_HOST
               valueFrom: # busca el valor de la variable de entorno en un secret
-                secretKeyRef: # es un secretKeyRef porque es un secreto
-                  name: postgres-config # el nombre del secret que creamos
+                configMapKeyRef: # postgres-config es un ConfigMap
+                  name: postgres-config # el nombre del configmap que creamos
                   key: DB_HOST
             - name: DB_PORT
               valueFrom: # busca el valor de la variable de entorno en un secret
-                secretKeyRef: # es un secretKeyRef porque es un secreto
-                  name: postgres-config # el nombre del secret que creamos
+                configMapKeyRef: # postgres-config es un ConfigMap
+                  name: postgres-config # el nombre del configmap que creamos
                   key: DB_PORT
             - name: DB_USERNAME
               valueFrom: # busca el valor de la variable de entorno en un secret
